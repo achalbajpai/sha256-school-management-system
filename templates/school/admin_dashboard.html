@@ -1,0 +1,201 @@
+{% extends 'school/adminbase.html' %}
+{% block content %}
+
+<div class="py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <!-- Page header -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-semibold text-gray-900">Dashboard Overview</h1>
+            <p class="mt-2 text-sm text-gray-700">Monitor and manage your school's key metrics</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Total Students Card -->
+            <div class="relative bg-white pt-5 px-4 pb-6 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <dt>
+                    <div class="absolute bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-user-graduate text-xl text-white"></i>
+                    </div>
+                    <p class="ml-16 text-sm font-medium text-gray-500 truncate">Total Students</p>
+                </dt>
+                <dd class="ml-16 flex items-baseline">
+                    <p class="text-2xl font-semibold text-gray-900">{{studentcount}}</p>
+                    <a href="/admin-view-student" class="ml-2 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                        View all
+                    </a>
+                </dd>
+            </div>
+
+            <!-- Total Teachers Card -->
+            <div class="relative bg-white pt-5 px-4 pb-6 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <dt>
+                    <div class="absolute bg-green-500 rounded-md p-3">
+                        <i class="fas fa-chalkboard-teacher text-xl text-white"></i>
+                    </div>
+                    <p class="ml-16 text-sm font-medium text-gray-500 truncate">Total Teachers</p>
+                </dt>
+                <dd class="ml-16 flex items-baseline">
+                    <p class="text-2xl font-semibold text-gray-900">{{teachercount}}</p>
+                    <a href="/admin-view-teacher" class="ml-2 text-sm font-medium text-green-600 hover:text-green-500">
+                        View all
+                    </a>
+                </dd>
+            </div>
+
+            <!-- Pending Students Card -->
+            <div class="relative bg-white pt-5 px-4 pb-6 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <dt>
+                    <div class="absolute bg-yellow-500 rounded-md p-3">
+                        <i class="fas fa-user-clock text-xl text-white"></i>
+                    </div>
+                    <p class="ml-16 text-sm font-medium text-gray-500 truncate">Pending Students</p>
+                </dt>
+                <dd class="ml-16 flex items-baseline">
+                    <p class="text-2xl font-semibold text-gray-900">{{pendingstudentcount}}</p>
+                    <a href="/admin-approve-student" class="ml-2 text-sm font-medium text-yellow-600 hover:text-yellow-500">
+                        Review
+                    </a>
+                </dd>
+            </div>
+
+            <!-- Pending Teachers Card -->
+            <div class="relative bg-white pt-5 px-4 pb-6 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <dt>
+                    <div class="absolute bg-red-500 rounded-md p-3">
+                        <i class="fas fa-user-tie text-xl text-white"></i>
+                    </div>
+                    <p class="ml-16 text-sm font-medium text-gray-500 truncate">Pending Teachers</p>
+                </dt>
+                <dd class="ml-16 flex items-baseline">
+                    <p class="text-2xl font-semibold text-gray-900">{{pendingteachercount}}</p>
+                    <a href="/admin-approve-teacher" class="ml-2 text-sm font-medium text-red-600 hover:text-red-500">
+                        Review
+                    </a>
+                </dd>
+            </div>
+        </div>
+
+        <!-- Financial Overview -->
+        <div class="mt-8">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Financial Overview</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <!-- Teacher Salary Card -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-medium text-gray-900">Teacher Salaries</h3>
+                            <i class="fas fa-money-check-alt text-green-500 text-xl"></i>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Active</p>
+                                <p class="mt-1 text-xl font-semibold text-green-600">₹{{teachersalary|default:"0"}}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Pending</p>
+                                <p class="mt-1 text-xl font-semibold text-yellow-600">₹{{pendingteachersalary|default:"0"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Fee Card -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-medium text-gray-900">Student Fees</h3>
+                            <i class="fas fa-file-invoice-dollar text-indigo-500 text-xl"></i>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Collected</p>
+                                <p class="mt-1 text-xl font-semibold text-green-600">₹{{studentfee|default:"0"}}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Pending</p>
+                                <p class="mt-1 text-xl font-semibold text-yellow-600">₹{{pendingstudentfee|default:"0"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mt-8">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Quick Actions</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="/admin-attendance" class="bg-white overflow-hidden shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-indigo-100 rounded-full p-3">
+                            <i class="fas fa-calendar-check text-xl text-indigo-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Attendance</h3>
+                            <p class="mt-1 text-sm text-gray-500">Manage student attendance</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/admin-notice" class="bg-white overflow-hidden shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full p-3">
+                            <i class="fas fa-bullhorn text-xl text-green-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Notice Board</h3>
+                            <p class="mt-1 text-sm text-gray-500">Post announcements</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/admin-fee" class="bg-white overflow-hidden shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-yellow-100 rounded-full p-3">
+                            <i class="fas fa-money-bill-wave text-xl text-yellow-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Fee Management</h3>
+                            <p class="mt-1 text-sm text-gray-500">Track student fees</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Notices -->
+        {% if notice %}
+        <div class="mt-8">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Recent Notices</h2>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <ul class="divide-y divide-gray-200">
+                    {% for n in notice %}
+                    <li class="p-4 hover:bg-gray-50">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-bell text-indigo-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900">
+                                    {{ n.message }}
+                                </p>
+                                <div class="mt-2 flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-user mr-1.5"></i>
+                                    <span>{{ n.by }}</span>
+                                    <span class="mx-2">&middot;</span>
+                                    <i class="fas fa-calendar-alt mr-1.5"></i>
+                                    <span>{{ n.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

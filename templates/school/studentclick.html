@@ -1,0 +1,65 @@
+{% extends 'school/homebase.html' %}
+{% block content %}
+
+<div class="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-purple-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div class="text-center">
+            <div class="flex justify-center">
+                <div class="bg-purple-600 p-4 rounded-full">
+                    <i class="fas fa-user-graduate text-4xl text-white"></i>
+                </div>
+            </div>
+            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+                Student Portal
+            </h2>
+            <p class="mt-2 text-sm text-gray-600">
+                Welcome to SHA256 School Management System
+            </p>
+        </div>
+
+        <div class="mt-8 space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+                <a href="studentsignup" class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    New Admission
+                </a>
+                <a href="studentlogin" class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="mt-10">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                    <div class="flex items-center space-x-3 text-gray-800">
+                        <i class="fas fa-book-reader text-purple-600"></i>
+                        <span class="text-sm font-medium">View Courses</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                    <div class="flex items-center space-x-3 text-gray-800">
+                        <i class="fas fa-calendar-check text-purple-600"></i>
+                        <span class="text-sm font-medium">Attendance</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                    <div class="flex items-center space-x-3 text-gray-800">
+                        <i class="fas fa-chart-bar text-purple-600"></i>
+                        <span class="text-sm font-medium">Performance</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-md">
+                    <div class="flex items-center space-x-3 text-gray-800">
+                        <i class="fas fa-bell text-purple-600"></i>
+                        <span class="text-sm font-medium">Notifications</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

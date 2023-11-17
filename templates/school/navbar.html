@@ -1,0 +1,75 @@
+<!-- Navigation -->
+<nav x-data="{ open: false }" class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="flex items-center">
+                        <i class="fas fa-shield-alt text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-2xl font-bold text-indigo-600">SHA256 School</span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-home mr-2"></i> Home
+                    </a>
+                    <a href="/adminclick" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-user-shield mr-2"></i> Admin
+                    </a>
+                    <a href="/teacherclick" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-chalkboard-teacher mr-2"></i> Teacher
+                    </a>
+                    <a href="/studentclick" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-user-graduate mr-2"></i> Student
+                    </a>
+                    <a href="/aboutus" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-info-circle mr-2"></i> About
+                    </a>
+                    <a href="/contactus" class="text-gray-700 hover:text-indigo-600 inline-flex items-center px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-indigo-600">
+                        <i class="fas fa-envelope mr-2"></i> Contact
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="h-6 w-6" x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open" class="sm:hidden" style="display: none;">
+        <div class="pt-2 pb-3 space-y-1">
+            <a href="/" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-home mr-2"></i> Home
+            </a>
+            <a href="/adminclick" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-user-shield mr-2"></i> Admin
+            </a>
+            <a href="/teacherclick" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-chalkboard-teacher mr-2"></i> Teacher
+            </a>
+            <a href="/studentclick" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-user-graduate mr-2"></i> Student
+            </a>
+            <a href="/aboutus" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-info-circle mr-2"></i> About
+            </a>
+            <a href="/contactus" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 block pl-3 pr-4 py-2 text-base font-medium border-l-4 border-transparent hover:border-indigo-600">
+                <i class="fas fa-envelope mr-2"></i> Contact
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16"></div>

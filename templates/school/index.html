@@ -1,0 +1,98 @@
+{% extends 'school/homebase.html' %}
+{% block content %}
+
+<div class="relative bg-white overflow-hidden">
+    <!-- Hero section -->
+    <div class="relative pt-6 pb-16 sm:pb-24">
+        <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+            <div class="text-center">
+                <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                    <span class="block">Welcome to</span>
+                    <span class="block text-indigo-600">SHA256 School</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Secure and efficient education management system with advanced features and modern interface.
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-md shadow">
+                        <a href="/adminclick" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                            <i class="fas fa-user-shield mr-2"></i> Admin Login
+                        </a>
+                    </div>
+                    <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                        <a href="/teacherclick" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i> Teacher Login
+                        </a>
+                    </div>
+                    <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                        <a href="/studentclick" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                            <i class="fas fa-user-graduate mr-2"></i> Student Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Features section -->
+<div class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Secure and Modern Education Management
+            </p>
+        </div>
+
+        <div class="mt-10">
+            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                <!-- Feature 1 -->
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <i class="fas fa-shield-alt text-xl"></i>
+                    </div>
+                    <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Secure Management</p>
+                    <p class="mt-2 ml-16 text-base text-gray-500">
+                        Advanced security features to protect sensitive student and teacher data.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <i class="fas fa-chalkboard-teacher text-xl"></i>
+                    </div>
+                    <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Teacher Management</p>
+                    <p class="mt-2 ml-16 text-base text-gray-500">
+                        Efficient teacher scheduling, attendance tracking, and performance monitoring.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Performance Analytics</p>
+                    <p class="mt-2 ml-16 text-base text-gray-500">
+                        Real-time analytics and reporting for student and teacher performance.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <i class="fas fa-mobile-alt text-xl"></i>
+                    </div>
+                    <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Modern Interface</p>
+                    <p class="mt-2 ml-16 text-base text-gray-500">
+                        Responsive design that works seamlessly on all devices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

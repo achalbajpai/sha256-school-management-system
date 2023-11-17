@@ -1,0 +1,164 @@
+{% extends 'school/homebase.html' %}
+{% block content %}
+
+<div class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="text-center">
+            <div class="flex justify-center">
+                <div class="bg-blue-600 p-3 rounded-full">
+                    <i class="fas fa-user-shield text-4xl text-white"></i>
+                </div>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Admin Login
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Welcome to SHA256 School Management System
+            </p>
+        </div>
+
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10 border border-gray-100">
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <!-- Username Field -->
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700">
+                            Username
+                        </label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-400"></i>
+                            </div>
+                            <input id="username" name="username" type="text" required
+                                class="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Enter your username">
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required
+                                class="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Enter your password">
+                        </div>
+                    </div>
+
+                    <!-- Error Messages -->
+                    {% if messages %}
+                    <div class="rounded-md bg-red-50 p-4 animate-bounce">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-circle text-red-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-sm font-medium text-red-800">
+                                    Authentication Failed
+                                </h3>
+                                <div class="mt-2 text-sm text-red-700">
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        {% for message in messages %}
+                                        <li>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            Sign in
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Additional Links -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">
+                                Need assistance?
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <div class="text-sm">
+                            <a href="{% url 'contactus' %}" class="font-medium text-blue-600 hover:text-blue-500 flex items-center">
+                                <i class="fas fa-headset mr-2"></i>
+                                Contact Support
+                            </a>
+                        </div>
+                        <div class="text-sm text-right">
+                            <a href="{% url 'aboutus' %}" class="font-medium text-blue-600 hover:text-blue-500 flex items-center justify-end">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                About Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Client-side validation -->
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    let hasError = false;
+    const errors = [];
+
+    if (username.length < 3) {
+        errors.push('Username must be at least 3 characters long');
+        hasError = true;
+    }
+
+    if (password.length < 8) {
+        errors.push('Password must be at least 8 characters long');
+        hasError = true;
+    }
+
+    if (hasError) {
+        e.preventDefault();
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'rounded-md bg-red-50 p-4 mt-4 animate-bounce';
+        errorDiv.innerHTML = `
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-exclamation-circle text-red-400"></i>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Please fix the following errors:</h3>
+                    <div class="mt-2 text-sm text-red-700">
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${errors.map(error => `<li>${error}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+        const submitButton = document.querySelector('button[type="submit"]');
+        submitButton.parentNode.insertBefore(errorDiv, submitButton);
+    }
+});
+</script>
+
+{% endblock content %}

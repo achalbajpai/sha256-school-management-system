@@ -1,0 +1,109 @@
+{% extends 'school/homebase.html' %}
+{% block content %}
+
+<div class="min-h-screen bg-gradient-to-br from-gray-100 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                About SHA256 School
+            </h1>
+            <p class="mt-4 text-xl text-gray-600">
+                Empowering Education Through Technology
+            </p>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-lg shadow-xl p-8">
+                <div class="flex items-center mb-4">
+                    <div class="bg-primary-600 p-3 rounded-full">
+                        <i class="fas fa-bullseye text-2xl text-white"></i>
+                    </div>
+                    <h2 class="ml-4 text-2xl font-bold text-gray-900">Our Mission</h2>
+                </div>
+                <p class="text-gray-600">
+                    To provide a comprehensive and efficient school management system that enhances the educational experience for students, teachers, and administrators through innovative technology solutions.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-8">
+                <div class="flex items-center mb-4">
+                    <div class="bg-primary-600 p-3 rounded-full">
+                        <i class="fas fa-eye text-2xl text-white"></i>
+                    </div>
+                    <h2 class="ml-4 text-2xl font-bold text-gray-900">Our Vision</h2>
+                </div>
+                <p class="text-gray-600">
+                    To be the leading provider of educational management solutions, fostering a connected and efficient learning environment that prepares students for future success.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Why Choose Us?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-primary-600 p-3 rounded-full">
+                            <i class="fas fa-shield-alt text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Secure Platform</h3>
+                    <p class="text-gray-600">
+                        State-of-the-art security measures to protect sensitive information and data.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-primary-600 p-3 rounded-full">
+                            <i class="fas fa-tachometer-alt text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Efficient Management</h3>
+                    <p class="text-gray-600">
+                        Streamlined processes for attendance, grades, and administrative tasks.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-primary-600 p-3 rounded-full">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Community Focus</h3>
+                    <p class="text-gray-600">
+                        Building stronger connections between students, teachers, and parents.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div>
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Our Leadership Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Achal Bajpai</h3>
+                    <p class="text-gray-600">Principal of SHA256 School</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Om Thakare</h3>
+                    <p class="text-gray-600">Director of SHA256 School</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

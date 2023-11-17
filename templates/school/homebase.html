@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SHA256 School - Secure Education Management{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJsSURBVFhH7ZZNaBNBFMf/s9lNYmrSJjVprYr0IIhQEQ+iUBD0IHjw4smDFz148OBFvAh68ST04EkQQfAkePEgCB4EQT2ICKJQQayKVWybtE2/kmST3X08Z5JQ0jRNstmA4P5gmHkz+2b+O/PmzcwKy7KwkSGudwvyPM9/1aGUwrIsZDIZxGIxhEIheDweSJL0R4wQAoZhIJ/Po1AoYGpqColEAul0GpqmwTRNx+8xB1iGbrcbfr8fwWAQkUgEu7u7EY/HEQ6H4XK5nIswB1jlfr8fgUAAoVAIu7q6sLW1FbFYzBHBHGCjxEbK6/UiEAhgcHAQBwYGkEwmEY1G4Xa7/zmBZVkol8uYn5/H+Pg4RkZGMDY2hkqlAl3XV8U7jgHrged5JBIJ9Pb2YmhoCIODg9i+fTui0egaEY4dYBWzEMzNzeHbt2+YmJjA6OgoZmZmUCwWUSqV1sQ7jgEbpWq1imKxiHQ6jdnZWXz//h2zs7OYn5+HYRh/xDiOAV3XUa1WUalUUCwWkc1mkclkkMvlkM/nUSgUYJqmoxjHDrCOWQzYyLPMKBaLyOVyyGazq/FgMWBxYPGwY+A4BmwSsVFnDrDKi8UiCoUCcrkcfv78iVwuh3K5vDoXnGJgmiaKxSIWFhYwPT2NqakpTE5OYmpqCj9+/EA2m0WpVFoVD8cxYBWz0WcOsNSbn5/H4uIiMpkMFhcXkc/noes6NE1zFAPHDrBONU1DuVxGuVxGqVRCpVJBtVpdvXccA8cxYBWzkWcjz7LA/rNYNBqNtTGwY+A4BmwUrVe5/f5vMXAcg40OLuA3YpJaBRXGvQQAAAAASUVORK5CYII=">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Better form styles */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            ring-color: #4f46e5;
+            ring-offset-color: #ffffff;
+            ring-offset-width: 2px;
+            ring-opacity: 0.5;
+            ring-offset-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Loading spinner */
+        .loading {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #4f46e5;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fade animations */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 300ms, transform 300ms;
+        }
+        
+        .fade-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-exit-active {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 300ms, transform 300ms;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+    
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    {% include "school/navbar.html" %}
+    
+    <main class="flex-grow">
+        <div class="container mx-auto px-4 py-8">
+            {% if messages %}
+            <div class="mb-8">
+                {% for message in messages %}
+                <div class="rounded-md p-4 {% if message.tags == 'error' %}bg-red-50 text-red-700{% elif message.tags == 'success' %}bg-green-50 text-green-700{% else %}bg-blue-50 text-blue-700{% endif %} fade-enter fade-enter-active">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            {% if message.tags == 'error' %}
+                            <i class="fas fa-exclamation-circle"></i>
+                            {% elif message.tags == 'success' %}
+                            <i class="fas fa-check-circle"></i>
+                            {% else %}
+                            <i class="fas fa-info-circle"></i>
+                            {% endif %}
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
+
+    {% include "school/footer.html" %}
+
+    <!-- Alpine.js for interactive components -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Function to show loading state
+        function showLoading(button) {
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = `
+                <div class="flex items-center justify-center">
+                    <div class="loading mr-2"></div>
+                    <span>Processing...</span>
+                </div>
+            `;
+            return originalText;
+        }
+
+        // Function to hide loading state
+        function hideLoading(button, originalText) {
+            button.disabled = false;
+            button.innerHTML = originalText;
+        }
+
+        // Add loading state to all forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle form submissions
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function() {
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        showLoading(submitBtn);
+                    }
+                });
+            });
+
+            // Handle message animations
+            const messages = document.querySelectorAll('.fade-enter');
+            messages.forEach(message => {
+                setTimeout(() => {
+                    message.classList.add('fade-exit');
+                    message.classList.add('fade-exit-active');
+                    setTimeout(() => {
+                        message.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+    
+    {% block js %}
+    {% endblock %}
+</body>
+</html>
